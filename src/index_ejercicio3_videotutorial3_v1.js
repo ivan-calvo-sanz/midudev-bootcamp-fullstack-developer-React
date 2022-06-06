@@ -1,13 +1,12 @@
 /*
 *****
-index_ejercicio3_videotutorial3_v2.js
+index_ejercicio3_videotutorial3_v1.js
 *****
 */
 
 /*
 realizado utilizando 1 unico estado
 (uniendo los 2 estados de la v0)
-y utilizando arrays
 */
 
 import { useState } from 'react';
@@ -22,21 +21,16 @@ const App = () => {
   const [counters, setCounters] = useState({
     left: 0,
     right: 0,
+    clicks: 0,
     mensaje: 'Mensaje en el estado'
   });
-
-  //creo el array clicks
-  const [clicks, setClicks] = useState([]);
 
   const handleClickLeft = () => {
     setCounters({
       ...counters,
       left: counters.left + 1,
+      clicks:counters.clicks+1
     });
-
-    setClicks(prevClicks => {
-      return [...prevClicks, 'L']
-    })
   }
 
   const handleClickRight = () => {
@@ -45,13 +39,9 @@ const App = () => {
       //recuperar todas las propiedades de un objeto
       ...counters,
       right: counters.right + 1,
+      clicks:counters.clicks+1
     }
     setCounters(newCountersState);
-
-    setClicks(prevClicks => {
-      return [...prevClicks, 'R']
-    })
-
   };
 
 
@@ -61,8 +51,8 @@ const App = () => {
       <button onClick={handleClickLeft}>left</button>
       <button onClick={handleClickRight}>right</button>
       {counters.right}
-      <p>Clicks totales:{clicks.length}</p>
-      {clicks.join(",")}
+      <p>Clicks totales:{counters.clicks}</p>
+      <p>{counters.mensaje}</p>
     </div>
   )
 }

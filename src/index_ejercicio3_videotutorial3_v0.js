@@ -1,11 +1,16 @@
 /*
 *****
-index_ejercicio3_videotutorial3.js
+index_ejercicio3_videotutorial3_v0.js
 *****
 */
 
-import {useState} from 'react'
-import ReactDOM from 'react-dom'
+/*
+realizado utilizando 2 estados
+*/
+
+import {useState} from 'react';
+import ReactDOM from 'react-dom';
+import './styles.css';
 
 const App=()=>{
   const [left,setLeft]=useState(0)
