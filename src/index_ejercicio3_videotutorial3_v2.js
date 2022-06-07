@@ -33,6 +33,7 @@ const App = () => {
       ...counters,
       left: counters.left + 1,
     });
+  
 
     setClicks(prevClicks => {
       return [...prevClicks, 'L']
