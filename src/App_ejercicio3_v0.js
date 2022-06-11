@@ -1,6 +1,7 @@
 /*
 *****
-index_ejercicio3_videotutorial3_v0.js
+App_ejercicio3_v0.js
+(videotutorial 3)
 *****
 */
 
@@ -9,10 +10,9 @@ realizado utilizando 2 estados
 */
 
 import {useState} from 'react';
-import ReactDOM from 'react-dom';
 import './styles.css';
 
-const App=()=>{
+export default function App () {
   const [left,setLeft]=useState(0)
   const [right,setRight]=useState(0)
 
@@ -25,7 +25,3 @@ const App=()=>{
     </div>
   )
 }
-
-const rootElement=document.getElementById("root");
-
-ReactDOM.render(<App />, rootElement);

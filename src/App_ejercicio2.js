@@ -1,12 +1,11 @@
 /*
 *****
-index_ejercicio1_videotutorial2.js
+App_ejercicio2.js
+(videotutorial 2)
 *****
 */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-
+import "./styles.css";
 
 //creo componente Title
 const Title = (props) => {
@@ -25,7 +24,7 @@ const Totales = (props) => {
   return <p>Number of exercises {props.exercises1 + props.exercises2 + props.exercises3}</p>
 }
 
-const App = () => {
+export default function App () {
   const course = 'Half Stack application development'
   const part1 = 'Fundamentals of React'
   const exercises1 = 10
@@ -44,5 +43,3 @@ const App = () => {
     </div>
   )
 }
-
-ReactDOM.render(<App />, document.getElementById('root'))

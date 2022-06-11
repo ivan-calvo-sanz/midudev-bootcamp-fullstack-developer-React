@@ -1,6 +1,7 @@
 /*
 *****
-index_ejercicio3_videotutorial3_v4.js
+App_ejercicio3_v4.js
+(videotutorial 3)
 *****
 */
 
@@ -10,7 +11,6 @@ RRECORRIENDO UN ARRAY PARA EL CALCULO DEclicks RIGHT o LEFT
 */
 
 import { useState } from 'react';
-import ReactDOM from 'react-dom';
 import './styles.css';
 
 const WarningNotUsed = () => {
@@ -21,7 +21,7 @@ const ListOfClicks = ({ clicks }) => {
   return <p>{clicks.join(", ")}</p>
 }
 
-const App = () => {
+export default function App () {
   //creo el array clicks
   const [clicks, setClicks] = useState([]);
 
@@ -57,7 +57,3 @@ const App = () => {
     </div>
   )
 }
-
-const rootElement = document.getElementById("root");
-
-ReactDOM.render(<App />, rootElement);
