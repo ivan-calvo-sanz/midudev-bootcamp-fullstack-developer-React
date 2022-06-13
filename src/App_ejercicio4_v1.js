@@ -13,7 +13,7 @@ Creo "Note.js" y en el exporto el elemento
 
 import React from 'react';
 import "./styles.css";
-import Note from "./Note.js";
+import Note from "./Note_ejercicio_4.js";
 
 export default function App({notes}) {
   if (typeof notes === "undefined" || notes.length === 0) {

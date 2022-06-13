@@ -1,19 +1,35 @@
 /*
 *****
-App_ejercicio4_v2.js
-(videotutorial 4)
+App_ejercicio5_v0.js
+(videotutorial 5)
 *****
 */
 
-import "./styles.css";
-import { useState } from 'react';
-import { Note } from "./Note_ejercicio_4.js";
+/*
+UTILIZANDO FETCH
+*/
 
-//hago que las Notas por props
-export default function App(props) {
-  const [notes, setNotes] = useState(props.notes);
+import "./styles.css";
+import { useEffect, useState } from 'react';
+import { Note } from "./Note_ejercicio_5.js";
+
+export default function App() {
+  //inicializa la API con un tipo de elemento que va a recibir en este caso un array
+  const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState('');
-  const [showAll, setShowAll] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      fetch('https://jsonplaceholder.typicode.com/posts')
+        .then((response) => response.json())
+        .then((json) => {
+          setNotes(json)
+          setLoading(false);
+        });
+    }, 2000);
+  }, []);
 
   const handleChange = (event) => {
     //console.log(event.target.value)
@@ -28,9 +44,8 @@ export default function App(props) {
 
     const noteToAddToState = {
       id: notes.length + 1,
-      content: newNote,
-      date: new Date().toISOString(),
-      important: Math.random() < 0.5
+      title: newNote,
+      body: newNote
     };
 
     console.log(noteToAddToState);
@@ -43,8 +58,9 @@ export default function App(props) {
     setNewNote("");
   }
 
-  const handleShowAll = () => {
-    setShowAll(() => !showAll);
+  
+  if(loading){
+    return "Cargando...";
   }
 
   if (typeof notes === "undefined" || notes.length === 0) {
@@ -54,15 +70,9 @@ export default function App(props) {
   return (
     <div>
       <h1>Notes</h1>
-      <button onClick={handleShowAll}>{showAll ? 'Show all' : 'Show only important'}</button>
       <ol>
         {notes
-        /* El filtro devuelve un booleano*/
-        .filter((note)=>{
-          if(showAll===true) return true;
-          return note.important===true;
-        })
-        .map(note => <Note key={note.id} id={note.id} content={note.content} date={note.date} />)}
+          .map(note => <Note key={note.id} title={note.title} body={note.body} />)}
       </ol>
 
       <form onSubmit={handleSubmit}>
